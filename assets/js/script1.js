@@ -20,17 +20,38 @@ form.addEventListener("submit", (e) => {
 
  function validar(nombre, asunto, mensaje) {
 
- let pasamosLaValidacion = true;
- let patron = /^[a-zA-Z\s]+$/gi;
+    let pasamosLaValidacion = true;
+    let patron = /^[a-zA-Z\s]+$/gi;
 
- if(patron.test(nombre) === false) {
-     document.querySelector(".errorNombre").innerHTML = "El asunto es requerido"
+    if(nombre === "") {
+        document.querySelector(".errorNombre").innerHTML = "El nombre es requerido"
      pasamosLaValidacion = false
- }
+    } else if(patron.test(nombre) === false) {
+     document.querySelector(".errorNombre").innerHTML = "El formato no es el correcto"
+     pasamosLaValidacion = false
+    }
 
- if(patron.test(asunto) === false) {
-     document.querySelector(".errorAsunto").innerHTML = "El asunto es requerido"
+    let patron01 = /^[a-zA-Z\s]+$/gi;
+
+
+    if(asunto === "") {
+        document.querySelector(".errorAsunto").innerHTML = "El asunto es requerido"
      pasamosLaValidacion = false
- }
+    } else if(patron01.test(asunto) === false) {
+     document.querySelector(".errorAsunto").innerHTML = "El formato no es el correcto"
+     pasamosLaValidacion = false
+    }
+
+ let patron02 = /^[a-zA-Z\s]+$/gi;
+
+ if(mensaje === "") {
+    document.querySelector(".errorMensaje").innerHTML = "El mensaje es requerido"
+ pasamosLaValidacion = false
+} else if(patron02.test(mensaje) === false) {
+ document.querySelector(".errorMensaje").innerHTML = "El formato no es el correcto"
+ pasamosLaValidacion = false
+}
+
     return pasamosLaValidacion
+      
 }
